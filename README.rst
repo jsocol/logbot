@@ -9,7 +9,7 @@ just logs what it sees.
 Installation
 ============
 
-Installation is very easy. Just clone `https://github.com/jsocol/logbot.git`,
+Installation is very easy. Just clone ``https://github.com/jsocol/logbot.git``,
 install the requirements (see below), edit a little text, and run!
 
 
@@ -37,8 +37,8 @@ below.
 Configuration
 -------------
 
-Once you've installed the requirements and cloned this repo, copy `settings.js`
-to `local.settings.js` and change whatever values you need to change.
+Once you've installed the requirements and cloned this repo, copy ``settings.js``
+to ``local.settings.js`` and change whatever values you need to change.
 
 
 Using Logbot
@@ -50,22 +50,22 @@ Normally, you don't have to do anything to use Logbot. Just let it run::
     $
 
 There are a few commands Logbot understands, if you start a message with its
-IRC nick and a colon, like `logbot: <command>`. They are:
+IRC nick and a colon, like ``logbot: <command>``. They are:
 
-* `logs`: Return where to find the logs on the internet.
-* `topic`: What is the channel topic and who set it?
-* `poptopic`: Undo the last known topic change. (See below.)
-* `uptime`: How long has this logbot instance been up?
-* `botsnack`: Yum!
+* ``logs``: Return where to find the logs on the internet.
+* ``topic``: What is the channel topic and who set it?
+* ``poptopic``: Undo the last known topic change. (See below.)
+* ``uptime``: How long has this logbot instance been up?
+* ``botsnack``: Yum!
 
 
-`poptopic`
-----------
+``poptopic``
+------------
 
-The `poptopic` command lets you use Logbot to undo a recent topic change,
+The ``poptopic`` command lets you use Logbot to undo a recent topic change,
 provided:
 
-* You're in Logbot's `ADMINS` list.
+* You're in Logbot's ``ADMINS`` list.
 
 * Logbot is a channel op (or halfop, as long it has permission to change the
   topic).
@@ -73,16 +73,16 @@ provided:
 * Logbot has seen the topic change at least once since it entered the channel.
 
 Logbot keeps a stack of topics for each channel it's in, so you can keep
-using `poptopic` to undo any change it's seen. Logbot only stores the topics
+using ``poptopic`` to undo any change it's seen. Logbot only stores the topics
 in memory, so if you have to restart, it won't remember old topics.
 
 
 Logs on the Web
 ===============
 
-Logbot dumps plain text logs into its `/logs` directory. The recommended
-method for getting them online is to use an `Alias` or symlink to the
-directory. For example, if I was running logbot from `/home/james/logbot` I
+Logbot dumps plain text logs into its ``/logs`` directory. The recommended
+method for getting them online is to use an ``Alias`` or symlink to the
+directory. For example, if I was running logbot from ``/home/james/logbot`` I
 might do something like::
 
     Alias /irclogs /home/james/logbot/logs
@@ -97,5 +97,5 @@ Known Issues
 ============
 
 * Some IRC servers, at least, don't seem to send the nick along with topic
-  changes, so `logbot: topic` results in something like: "The topic is "foo"
+  changes, so ``logbot: topic`` results in something like: "The topic is "foo"
   set by undefined." I've noticed this with hybrid-ircd.
