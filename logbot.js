@@ -3,15 +3,26 @@
 var irc = require('irc'),
     fs = require('fs'),
     daemonize = require('fork').daemonize,
-    NICK = 'jbot',
-    CHANNELS = ['#brew', '#sandbox'],
-    ADMINS = ['james'],
-    LOGS= {},
     TOPICS = {},
     START = new Date(),
-    LOG_URL = 'http://jamessocol.com/irclogs/';
+    settings = require('./local.settings');
 
-daemonize();
+var NICK = settings.NICK || 'logbot',
+    SERVER = settings.SERVER || 'localhost',
+    SECURE = settings.SECURE || false,
+    CHANNELS = settings.CHANNELS || [],
+    ADMINS = settings.ADMINS || [],
+    LOG_URL = settings.LOG_URL || 'http://localhost/logs/',
+    DAEMONIZE = settings.DAEMONIZE || false,
+    NOMS = settings.NOMS || [
+        'omnomnom',
+        'nom nom nom',
+        'yummy!',
+        '\\o/',
+        'yay!',
+        'mMMmmmm',
+        'oh yeah',
+        ];
 
 // From Django's jsi18n.
 function format(fmt, obj, named) {
@@ -36,12 +47,13 @@ function log(channel, message) {
     out.write(format('%s: %s\n', [now.toTimeString(), message]));
 }
 
-for(var i=0; i<CHANNELS.length; i++) {
+for(var i=0; i < CHANNELS.length; i++) {
     TOPICS[CHANNELS[i]] = [];
 }
 
-var client = new irc.Client('irc.jamessocol.net', NICK, {
+var client = new irc.Client(SERVER, NICK, {
     channels: CHANNELS,
+    secure: SECURE,
 });
 
 client.addListener('error', function(message) {
@@ -113,6 +125,9 @@ client.addListener('message', function(from, to, message) {
                         "%s: I've been up for %s %s.",
                         [from, parseInt(uptime), units]);
                     break;
+                case 'botsnack':
+                    response = NOMS[Math.floor(Math.random() * NOMS.length)];
+                    break;
             }
             if (response) {
                 client.say(target, response);
@@ -144,3 +159,7 @@ client.addListener('topic', function(channel, topic, who) {
     log(channel, format('Topic is "%s" (set by %s)', [topic, who]));
     TOPICS[channel].push({'topic': topic, 'who': who});
 });
+
+if (DAEMONIZE) {
+    daemonize();
+}
