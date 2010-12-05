@@ -1,5 +1,8 @@
+#!/usr/bin/env node
+
 var irc = require('irc'),
     fs = require('fs'),
+    daemonize = require('fork').daemonize,
     NICK = 'jbot',
     CHANNELS = ['#brew', '#sandbox'],
     ADMINS = ['james'],
@@ -7,6 +10,8 @@ var irc = require('irc'),
     TOPICS = {},
     START = new Date(),
     LOG_URL = 'http://jamessocol.com/irclogs/';
+
+daemonize();
 
 // From Django's jsi18n.
 function format(fmt, obj, named) {
