@@ -99,3 +99,6 @@ Known Issues
 * Some IRC servers, at least, don't seem to send the nick along with topic
   changes, so ``logbot: topic`` results in something like: "The topic is "foo"
   set by undefined." I've noticed this with hybrid-ircd.
+
+* For some reason, the node process seems to die after around 24 hours. I
+  haven't chased this down yet.
