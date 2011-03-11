@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 
 var irc = require('irc'),
+    sys = require('sys'),
     fs = require('fs'),
-    daemonize = require('fork').daemonize,
+    daemon = require('daemon'),
     TOPICS = {},
     START = new Date(),
     settings = require('./local.settings');
@@ -161,5 +162,10 @@ client.addListener('topic', function(channel, topic, who) {
 });
 
 if (DAEMONIZE) {
-    daemonize();
+	daemon.daemonize('daemon.log', '/tmp/logbot.pid', function(err, pid) {
+		// In daemon
+		if (err) return sys.puts('Error starting daemon: ' + err);
+
+		sys.puts('Daemon started with pid: ' + pid);
+	});
 }

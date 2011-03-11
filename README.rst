@@ -1,5 +1,5 @@
 ==========
-Logbot 0.1
+Logbot 0.2
 ==========
 
 Logbot is a very simple `node.js <http://github.com/ry/node>`_ IRC bot that
@@ -19,13 +19,13 @@ Requirements
 Besides *node.js* itself, Logbot has two additional requirements:
 
 * `node-irc <http://github.com/martynsmith/node-irc>`_
-* `node-fork <https://github.com/ryantenney/node-fork>`_
+* `daemon.node <https://github.com/indexzero/daemon.node>`_
 
 Both can be installed via `npm <http://github.com/isaacs/npm>`_ very
 easily::
 
     npm install irc
-    npm install fork
+    npm install daemon
 
 The exact details of how you choose to install these requirements is up to
 you.
@@ -52,11 +52,16 @@ Normally, you don't have to do anything to use Logbot. Just let it run::
 There are a few commands Logbot understands, if you start a message with its
 IRC nick and a colon, like ``logbot: <command>``. They are:
 
-* ``logs``: Return where to find the logs on the internet.
-* ``topic``: What is the channel topic and who set it?
-* ``poptopic``: Undo the last known topic change. (See below.)
-* ``uptime``: How long has this logbot instance been up?
-* ``botsnack``: Yum!
+``logs``:
+  Return where to find the logs on the internet.
+``topic``:
+  What is the channel topic and who set it?
+``poptopic``:
+  Undo the last known topic change. (See below.)
+``uptime``:
+  How long has this logbot instance been up?
+``botsnack``:
+  Yum!
 
 
 ``poptopic``
