@@ -1,1 +1,2 @@
-DefaultType text/plain
+#DefaultType text/plain
+Options +Indexes

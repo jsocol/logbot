@@ -34,11 +34,11 @@ function format(fmt, obj, named) {
 }
 
 function log(channel, message) {
-    var filename = 'logs/%s-%s-%s-%s',
+    var filename = 'logs/%s-%s-%s-%s.txt',
         now = new Date(),
         out;
     filename = format(filename, [channel.substring(1), now.getFullYear(),
-                                 now.getMonth(), now.getDate()]);
+                                 now.getMonth()+1, now.getDate()]);
     out = new fs.WriteStream(filename, {
         'flags': 'a+',
         'encoding': 'utf-8',
