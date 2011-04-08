@@ -1,5 +1,5 @@
 ==========
-Logbot 0.2
+Logbot 0.3
 ==========
 
 Logbot is a very simple `node.js <http://github.com/ry/node>`_ IRC bot that
