@@ -2,6 +2,9 @@
 Logbot 0.3
 ==========
 
+**Deprecated** - I hope no one is using this. I can't even imagine it works
+with modern node.js.
+
 Logbot is a very simple `node.js <http://github.com/ry/node>`_ IRC bot that
 just logs what it sees.
 
